@@ -1,5 +1,5 @@
 function renderHeader(active) {
-  const header = document.querySelector("header");
+  const header = document.querySelector('header');
   if (!header) return;
   header.innerHTML = `
     <div class="navbar">
@@ -15,18 +15,41 @@ function renderHeader(active) {
         <a href="faq.html" class="${active === 'faq' ? 'active' : ''}">FAQ</a>
         <a href="blog.html" class="${active === 'blog' ? 'active' : ''}">Blog</a>
         <a href="compte.html" class="${active === 'compte' ? 'active' : ''}">Compte</a>
-        <a href="admin.html" class="${active === 'admin' ? 'active' : ''}">Admin</a>
       </nav>
-      <div class="nav-right">
-        <a href="catalogue.html" class="btn-outline">Catalogue</a>
+      <div class="nav-right" id="navAuth">
         <a href="compte.html" class="btn-primary">Mon compte</a>
       </div>
     </div>
   `;
+  onSupabaseReady(async () => {
+    const { data: { session } } = await window.sb.auth.getSession();
+    const navAuth = document.getElementById('navAuth');
+    if (!navAuth) return;
+    if (session) {
+      const { data: profile } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
+      const isAdmin = profile && profile.role === 'admin';
+      navAuth.innerHTML = `
+        ${isAdmin ? '<a href="admin.html" class="btn-outline" style="color:#dc2626;border-color:#dc2626;">⚙ Admin</a>' : ''}
+        <span style="font-size:0.85rem;color:#4b5563;">${profile?.societe || session.user.email}</span>
+        <button class="btn-outline" onclick="deconnexion()">Déconnexion</button>
+      `;
+    } else {
+      navAuth.innerHTML = `
+        <a href="compte.html" class="btn-outline">Se connecter</a>
+        <a href="compte.html#inscription" class="btn-primary">Créer un compte</a>
+      `;
+    }
+  });
+}
+
+async function deconnexion() {
+  await window.sb.auth.signOut();
+  localStorage.removeItem('panier');
+  window.location.href = 'index.html';
 }
 
 function renderFooter() {
-  const footer = document.querySelector("footer");
+  const footer = document.querySelector('footer');
   if (!footer) return;
   const year = new Date().getFullYear();
   footer.innerHTML = `
@@ -37,24 +60,33 @@ function renderFooter() {
   `;
 }
 
-function ajouterAuPanier(idProduit, quantiteCommande) {
-  const produit = produits.find(p => p.id === idProduit);
-  if (!produit) return;
+function ajouterAuPanier(idProduit, quantiteCommande, produit) {
   const quantite = Number(quantiteCommande);
-  if (Number.isNaN(quantite) || quantite < produit.quantiteMin) {
-    alert(`Quantité minimale pour ce produit : ${produit.quantiteMin} unités.`);
+  if (Number.isNaN(quantite) || quantite < produit.quantite_min) {
+    alert(`Quantité minimale : ${produit.quantite_min} unités.`);
     return;
   }
   const existant = panier.find(item => item.id === idProduit);
   if (existant) {
     existant.quantite += quantite;
   } else {
-    panier.push({ id: produit.id, titre: produit.titre, prixUnitaire: produit.prixUnitaire, quantite });
+    panier.push({ id: produit.id, titre: produit.titre, prix_unitaire: produit.prix_unitaire, quantite });
   }
-  localStorage.setItem("panier", JSON.stringify(panier));
-  alert("Produit ajouté au panier !");
+  localStorage.setItem('panier', JSON.stringify(panier));
+  alert('Produit ajouté au panier !');
 }
 
 function formatPrix(valeur) {
-  return valeur.toFixed(2).replace(".", ",") + " €";
+  return Number(valeur).toFixed(2).replace('.', ',') + ' €';
+}
+
+async function verifierAdmin() {
+  return new Promise(resolve => {
+    onSupabaseReady(async () => {
+      const { data: { session } } = await window.sb.auth.getSession();
+      if (!session) { resolve(false); return; }
+      const { data: profile } = await window.sb.from('profiles').select('role').eq('id', session.user.id).single();
+      resolve(profile && profile.role === 'admin');
+    });
+  });
 }
