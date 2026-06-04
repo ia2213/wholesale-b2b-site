@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon compte - B2B Wholesale Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <h1 class="section-title">Mon compte &amp; panier</h1>
+
+    <section class="card" style="margin-bottom:1rem;">
+      <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Informations client</h2>
+      <form id="formClient">
+        <div class="form-group"><label for="societe">Société</label><input type="text" id="societe" required></div>
+        <div class="form-group"><label for="siret">SIRET (optionnel)</label><input type="text" id="siret"></div>
+        <div class="form-group"><label for="email">E-mail</label><input type="email" id="email" required></div>
+        <div class="form-group"><label for="adresse">Adresse de livraison</label><textarea id="adresse" rows="2" required></textarea></div>
+      </form>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem;">
+      <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Panier</h2>
+      <div id="panierContainer"></div>
+    </section>
+
+    <section class="card">
+      <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Validation &amp; paiement (simulation)</h2>
+      <p style="font-size:0.9rem;margin-bottom:0.75rem;">Cette section simule un paiement. Dans une vraie application, elle serait reliée à une solution de paiement sécurisée (Stripe, etc.).</p>
+      <button id="btnValiderCommande" class="btn-primary">Valider la commande</button>
+      <div id="messageCommande" style="margin-top:0.75rem;"></div>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/compte.js"></script>
+  <script>
+    renderHeader('compte');
+    renderFooter();
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin produits - B2B Wholesale Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <h1 class="section-title">Administration des produits</h1>
+
+    <section class="card" style="margin-bottom:1rem;">
+      <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Ajouter / modifier un produit</h2>
+      <div id="messageAdmin"></div>
+      <form id="formProduit">
+        <input type="hidden" id="produitId">
+        <div class="form-group"><label for="titreProduit">Titre</label><input type="text" id="titreProduit" required></div>
+        <div class="form-group"><label for="descriptionProduit">Description</label><textarea id="descriptionProduit" rows="2" required></textarea></div>
+        <div class="form-group"><label for="prixProduit">Prix unitaire (€)</label><input type="number" step="0.01" id="prixProduit" required></div>
+        <div class="form-group"><label for="quantiteMinProduit">Quantité minimale</label><input type="number" id="quantiteMinProduit" required></div>
+        <div class="form-group"><label for="categorieProduit">Catégorie</label><input type="text" id="categorieProduit" placeholder="Ex : Textile"></div>
+        <div class="form-group"><label for="imageProduit">URL image</label><input type="text" id="imageProduit" placeholder="assets/img/produit3.jpg"></div>
+        <button type="submit" class="btn-primary">Enregistrer le produit</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Liste des produits</h2>
+      <div id="listeProduitsAdmin"></div>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    renderHeader('admin');
+    renderFooter();
+  </script>
+</body>
+</html>
