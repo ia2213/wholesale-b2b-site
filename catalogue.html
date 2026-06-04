@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Catalogue — WholesaleHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=4">
 </head>
 <body>
 <header></header>
 <main>
-
   <div class="section-header" style="margin-bottom:1.5rem;">
     <div>
       <h1 class="section-title">Catalogue produits</h1>
       <p class="section-subtitle" style="margin-bottom:0;">Tous nos lots disponibles à la commande B2B</p>
     </div>
   </div>
-
   <div class="filter-bar">
     <form id="filtreForm" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;width:100%;">
       <div style="flex:1 1 180px;">
@@ -40,7 +38,6 @@
       </div>
     </form>
   </div>
-
   <section id="listeProduits" class="product-grid">
     <div class="empty-state" style="grid-column:1/-1;">
       <div class="empty-state-icon">📦</div>
@@ -48,13 +45,12 @@
       <p>Les produits apparaîtront ici une fois connecté à la base de données.</p>
     </div>
   </section>
-
 </main>
 <footer></footer>
-<script src="assets/js/supabase.js"></script>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/catalogue.js"></script>
+<script src="assets/js/supabase.js?v=4"></script>
+<script src="assets/js/data.js?v=4"></script>
+<script src="assets/js/main.js?v=4"></script>
+<script src="assets/js/catalogue.js?v=4"></script>
 <script>renderHeader('catalogue'); renderFooter();</script>
 </body>
 </html>

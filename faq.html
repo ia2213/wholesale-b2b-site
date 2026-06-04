@@ -3,67 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>FAQ — WholesaleHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=4">
 </head>
 <body>
 <header></header>
 <main>
   <div style="max-width:720px;margin:0 auto;">
-
     <div style="margin-bottom:2rem;">
       <h1 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.375rem;">Questions fréquentes</h1>
       <p style="color:var(--text-muted);font-size:0.9375rem;">Tout ce que vous devez savoir pour commander sur WholesaleHub.</p>
     </div>
-
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Comment ouvrir un compte professionnel ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Comment ouvrir un compte professionnel ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Cliquez sur "Créer un compte" en haut de la page, renseignez votre nom de société, email professionnel et mot de passe. Votre compte est activé immédiatement.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Quelles sont les quantités minimales de commande ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Quelles sont les quantités minimales de commande ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Chaque produit a sa propre quantité minimale (MOQ) affichée sur sa fiche. En général, les MOQ débutent à 10 unités pour le textile et 50 unités pour les fournitures.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Quels modes de paiement acceptez-vous ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Quels modes de paiement acceptez-vous ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Nous acceptons les virements bancaires et les paiements par carte via notre interface sécurisée. Les factures sont générées automatiquement après validation.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Quels sont les délais de livraison ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Quels sont les délais de livraison ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Le délai standard est de 48h pour la France métropolitaine. Les commandes passées avant 14h sont expédiées le jour même.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Puis-je obtenir des prix dégressifs ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Puis-je obtenir des prix dégressifs ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Oui, les prix affichés sur chaque produit incluent la grille tarifaire dégressive selon les volumes. Plus vous commandez, moins vous payez à l'unité.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <h3>Comment suivre ma commande ?</h3>
-          <span class="faq-icon">+</span>
+          <h3>Comment suivre ma commande ?</h3><span class="faq-icon">+</span>
         </div>
         <div class="faq-answer" style="display:none;">Depuis votre espace client, dans l'onglet "Mes commandes", vous accédez à l'état et au numéro de suivi de chaque expédition en temps réel.</div>
       </div>
     </div>
-
     <div class="banner-cta" style="margin-top:3rem;">
       <div class="banner-cta-text">
         <h3>Vous n'avez pas trouvé votre réponse ?</h3>
@@ -71,7 +62,6 @@
       </div>
       <a href="mailto:contact@wholesalehub.fr" class="btn-blue">Nous contacter →</a>
     </div>
-
   </div>
 </main>
 <footer></footer>
@@ -85,8 +75,8 @@ function toggleFaq(btn) {
   if (!isOpen) { answer.style.display = 'block'; icon.textContent = '−'; }
 }
 </script>
-<script src="assets/js/supabase.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/supabase.js?v=4"></script>
+<script src="assets/js/main.js?v=4"></script>
 <script>renderHeader('faq'); renderFooter();</script>
 </body>
 </html>
