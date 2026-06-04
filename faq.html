@@ -10,30 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-
-<header>
-  <div class="navbar">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-brand-icon">W</div>
-      <span class="nav-brand-name">WholesaleHub</span>
-    </a>
-    <div class="nav-center" id="navCenter">
-      <nav class="nav-links">
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="faq.html" class="active">FAQ</a>
-        <a href="blog.html">Ressources</a>
-        <a href="compte.html">Mon compte</a>
-      </nav>
-    </div>
-    <div class="nav-right" id="navAuth">
-      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
-      <a href="compte.html" class="btn-primary btn-sm">Créer un compte</a>
-    </div>
-    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
+<header></header>
 <main>
   <div style="max-width:720px;margin:0 auto;">
 
@@ -43,7 +20,6 @@
     </div>
 
     <div class="faq-list">
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Comment ouvrir un compte professionnel ?</h3>
@@ -51,7 +27,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Cliquez sur "Créer un compte" en haut de la page, renseignez votre nom de société, email professionnel et mot de passe. Votre compte est activé immédiatement.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quelles sont les quantités minimales de commande ?</h3>
@@ -59,7 +34,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Chaque produit a sa propre quantité minimale (MOQ) affichée sur sa fiche. En général, les MOQ débutent à 10 unités pour le textile et 50 unités pour les fournitures.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quels modes de paiement acceptez-vous ?</h3>
@@ -67,7 +41,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Nous acceptons les virements bancaires et les paiements par carte via notre interface sécurisée. Les factures sont générées automatiquement après validation.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Quels sont les délais de livraison ?</h3>
@@ -75,7 +48,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Le délai standard est de 48h pour la France métropolitaine. Les commandes passées avant 14h sont expédiées le jour même.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Puis-je obtenir des prix dégressifs ?</h3>
@@ -83,7 +55,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Oui, les prix affichés sur chaque produit incluent la grille tarifaire dégressive selon les volumes. Plus vous commandez, moins vous payez à l'unité.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>Comment suivre ma commande ?</h3>
@@ -91,7 +62,6 @@
         </div>
         <div class="faq-answer" style="display:none;">Depuis votre espace client, dans l'onglet "Mes commandes", vous accédez à l'état et au numéro de suivi de chaque expédition en temps réel.</div>
       </div>
-
     </div>
 
     <div class="banner-cta" style="margin-top:3rem;">
@@ -104,36 +74,7 @@
 
   </div>
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
-        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Plateforme</div>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="compte.html">Mon compte</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Ressources</div>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Blog</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Contact</div>
-        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
-      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
-    </div>
-  </div>
-</footer>
-
+<footer></footer>
 <script>
 function toggleFaq(btn) {
   const answer = btn.nextElementSibling;
@@ -143,25 +84,9 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
   if (!isOpen) { answer.style.display = 'block'; icon.textContent = '−'; }
 }
-document.getElementById('burgerBtn')?.addEventListener('click', () => {
-  document.getElementById('navCenter')?.classList.toggle('open');
-});
 </script>
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-onSupabaseReady && onSupabaseReady(async () => {
-  const { data: { session } } = await window.sb.auth.getSession();
-  if (!session) return;
-  const { data: p } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
-  const el = document.getElementById('navAuth');
-  if (!el) return;
-  el.innerHTML =
-    (p?.role === 'admin' ? '<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>' : '') +
-    `<span class="nav-user-name">${p?.societe || session.user.email}</span>` +
-    '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>' +
-    '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
-});
-</script>
+<script>renderHeader('faq'); renderFooter();</script>
 </body>
 </html>

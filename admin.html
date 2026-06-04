@@ -10,29 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-
-<header>
-  <div class="navbar">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-brand-icon">W</div>
-      <span class="nav-brand-name">WholesaleHub</span>
-    </a>
-    <div class="nav-center" id="navCenter">
-      <nav class="nav-links">
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Ressources</a>
-        <a href="admin.html" class="active">Admin</a>
-      </nav>
-    </div>
-    <div class="nav-right" id="navAuth">
-      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
-    </div>
-    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
+<header></header>
 <main id="adminMain">
   <div class="empty-state">
     <div class="empty-state-icon">🔒</div>
@@ -40,44 +18,11 @@
     <p>Accès réservé aux administrateurs.</p>
   </div>
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
-        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Plateforme</div>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="compte.html">Mon compte</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Ressources</div>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Blog</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Contact</div>
-        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
-      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
-    </div>
-  </div>
-</footer>
-
-<script>
-document.getElementById('burgerBtn')?.addEventListener('click', () => {
-  document.getElementById('navCenter')?.classList.toggle('open');
-});
-</script>
+<footer></footer>
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/admin.js"></script>
+<script>renderHeader('admin'); renderFooter();</script>
 </body>
 </html>

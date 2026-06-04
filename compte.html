@@ -10,40 +10,15 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-
-<header>
-  <div class="navbar">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-brand-icon">W</div>
-      <span class="nav-brand-name">WholesaleHub</span>
-    </a>
-    <div class="nav-center" id="navCenter">
-      <nav class="nav-links">
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Ressources</a>
-        <a href="compte.html" class="active">Mon compte</a>
-      </nav>
-    </div>
-    <div class="nav-right" id="navAuth">
-      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
-      <a href="compte.html" class="btn-primary btn-sm">Créer un compte</a>
-    </div>
-    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
+<header></header>
 <main>
 
-  <!-- NON CONNECTÉ -->
   <div id="zoneAuth">
     <div style="max-width:440px;margin:0 auto;">
       <div class="tab-list" id="authTabs">
         <button class="tab-btn active" onclick="switchTab('connexion')">Connexion</button>
         <button class="tab-btn" onclick="switchTab('inscription')">Créer un compte</button>
       </div>
-
       <div id="tab-connexion" class="auth-card">
         <h2 class="auth-title">Connexion</h2>
         <p class="auth-subtitle">Accédez à votre espace professionnel.</p>
@@ -58,12 +33,9 @@
           </div>
           <button type="submit" class="btn-primary" style="width:100%;">Se connecter</button>
         </form>
-        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">
-          Pas encore de compte ? <a href="#" onclick="switchTab('inscription')" style="color:var(--accent);font-weight:600;">S'inscrire</a>
-        </p>
+        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">Pas encore de compte ? <a href="#" onclick="switchTab('inscription')" style="color:var(--accent);font-weight:600;">S'inscrire</a></p>
         <div id="msgConnexion"></div>
       </div>
-
       <div id="tab-inscription" class="auth-card" style="display:none;">
         <h2 class="auth-title">Créer un compte</h2>
         <p class="auth-subtitle">Rejoignez la plateforme B2B gratuitement.</p>
@@ -82,15 +54,12 @@
           </div>
           <button type="submit" class="btn-primary" style="width:100%;">Créer mon compte</button>
         </form>
-        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">
-          Déjà un compte ? <a href="#" onclick="switchTab('connexion')" style="color:var(--accent);font-weight:600;">Se connecter</a>
-        </p>
+        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">Déjà un compte ? <a href="#" onclick="switchTab('connexion')" style="color:var(--accent);font-weight:600;">Se connecter</a></p>
         <div id="msgInscription"></div>
       </div>
     </div>
   </div>
 
-  <!-- CONNECTÉ -->
   <div id="zoneCompte" style="display:none;">
     <div class="tab-list" id="compteTabs">
       <button class="tab-btn active" onclick="switchCompteTab('profil', this)">Profil</button>
@@ -103,36 +72,7 @@
   </div>
 
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
-        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Plateforme</div>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="compte.html">Mon compte</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Ressources</div>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Blog</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Contact</div>
-        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
-      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
-    </div>
-  </div>
-</footer>
-
+<footer></footer>
 <script>
 function switchTab(tab) {
   document.getElementById('tab-connexion').style.display = tab === 'connexion' ? 'block' : 'none';
@@ -140,7 +80,6 @@ function switchTab(tab) {
   document.querySelectorAll('#authTabs .tab-btn').forEach((btn, i) => {
     btn.classList.toggle('active', (i === 0 && tab === 'connexion') || (i === 1 && tab === 'inscription'));
   });
-  if (tab === 'inscription') history.replaceState(null, '', '#inscription');
 }
 function switchCompteTab(tab, btn) {
   document.querySelectorAll('.compte-tab').forEach(el => el.style.display = 'none');
@@ -149,13 +88,11 @@ function switchCompteTab(tab, btn) {
   btn.classList.add('active');
 }
 if (location.hash === '#inscription') switchTab('inscription');
-document.getElementById('burgerBtn')?.addEventListener('click', () => {
-  document.getElementById('navCenter')?.classList.toggle('open');
-});
 </script>
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/compte.js"></script>
+<script>renderHeader('compte'); renderFooter();</script>
 </body>
 </html>
