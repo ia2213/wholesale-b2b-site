@@ -10,23 +10,28 @@ function renderHeader(active) {
           <div class="nav-brand-sub">Vente en gros B2B</div>
         </div>
       </div>
+
+      <div class="nav-center">
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" class="${active === 'accueil' ? 'active' : ''}">Accueil</a>
+          <a href="catalogue.html" class="${active === 'catalogue' ? 'active' : ''}">Catalogue</a>
+          <a href="faq.html" class="${active === 'faq' ? 'active' : ''}">FAQ</a>
+          <a href="blog.html" class="${active === 'blog' ? 'active' : ''}">Blog</a>
+          <a href="compte.html" class="${active === 'compte' ? 'active' : ''}">Compte</a>
+        </nav>
+      </div>
+
       <button class="burger" id="burgerBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html" class="${active === 'accueil' ? 'active' : ''}">Accueil</a>
-        <a href="catalogue.html" class="${active === 'catalogue' ? 'active' : ''}">Catalogue</a>
-        <a href="faq.html" class="${active === 'faq' ? 'active' : ''}">FAQ</a>
-        <a href="blog.html" class="${active === 'blog' ? 'active' : ''}">Blog</a>
-        <a href="compte.html" class="${active === 'compte' ? 'active' : ''}">Compte</a>
-      </nav>
+
       <div class="nav-right" id="navAuth">
-        <span style="font-size:0.8rem;color:#94a3b8;">Chargement...</span>
+        <span class="nav-right-placeholder btn-outline">Chargement</span>
+        <span class="nav-right-placeholder btn-primary">Chargement</span>
       </div>
     </div>
   `;
 
-  // Burger toggle
   document.getElementById('burgerBtn')?.addEventListener('click', () => {
     document.getElementById('navLinks')?.classList.toggle('open');
   });
@@ -40,15 +45,11 @@ function renderHeader(active) {
       const { data: profile } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
       const isAdmin = profile && profile.role === 'admin';
       navAuth.innerHTML = `
-        ${isAdmin ? '<a href="admin.html" class="btn-danger" style="font-size:0.82rem;padding:0.4rem 0.8rem;">⚙️ Admin</a>' : ''}
-        <span style="font-size:0.82rem;color:var(--text-muted);display:none;" class="nav-user-name">${profile?.societe || session.user.email}</span>
-        <a href="compte.html" class="btn-outline" style="font-size:0.82rem;padding:0.4rem 0.8rem;">Mon compte</a>
-        <button class="btn-primary" style="font-size:0.82rem;padding:0.4rem 0.8rem;" onclick="deconnexion()">Déconnexion</button>
+        ${isAdmin ? '<a href="admin.html" class="btn-danger">⚙ Admin</a>' : ''}
+        <span class="nav-user-name">${profile?.societe || session.user.email}</span>
+        <a href="compte.html" class="btn-outline">Mon compte</a>
+        <button class="btn-primary" onclick="deconnexion()">Déconnexion</button>
       `;
-      // Affiche le nom sur grand écran
-      if (window.innerWidth > 768) {
-        navAuth.querySelector('.nav-user-name').style.display = 'inline';
-      }
     } else {
       navAuth.innerHTML = `
         <a href="compte.html" class="btn-outline">Se connecter</a>
@@ -71,10 +72,10 @@ function renderFooter() {
   footer.innerHTML = `
     <div class="footer-inner">
       <div>
-        <strong style="color:white;">B2B Wholesale Hub</strong><br>
+        <div class="footer-brand">B2B Wholesale Hub</div>
         <span style="font-size:0.78rem;">© ${year} Tous droits réservés.</span>
       </div>
-      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <div class="footer-links">
         <a href="faq.html">FAQ</a>
         <a href="blog.html">Blog</a>
         <a href="catalogue.html">Catalogue</a>
