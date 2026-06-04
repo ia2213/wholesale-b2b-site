@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Administration — WholesaleHub</title>
+  <title>Admin — WholesaleHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,56 +10,74 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header></header>
-  <main>
-    <div id="adminBlocked" style="display:none;">
-      <div class="card" style="max-width:440px;">
-        <div class="alert alert-error">⛔ Accès refusé — Cette page est réservée aux administrateurs.</div>
-        <a href="compte.html" class="btn-outline">← Retour à la connexion</a>
+
+<header>
+  <div class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-icon">W</div>
+      <span class="nav-brand-name">WholesaleHub</span>
+    </a>
+    <div class="nav-center" id="navCenter">
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Ressources</a>
+        <a href="admin.html" class="active">Admin</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="navAuth">
+      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="adminMain">
+  <div class="empty-state">
+    <div class="empty-state-icon">🔒</div>
+    <h3>Vérification en cours...</h3>
+    <p>Accès réservé aux administrateurs.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
+        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Plateforme</div>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="compte.html">Mon compte</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Ressources</div>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
       </div>
     </div>
-
-    <div id="adminContent" style="display:none;">
-      <div class="admin-header">
-        <div>
-          <h1 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;">Administration</h1>
-          <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.2rem;">Gestion du catalogue produits</p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:1.5rem;">
-        <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1.25rem;">Ajouter / modifier un produit</h2>
-        <div id="messageAdmin"></div>
-        <form id="formProduit">
-          <input type="hidden" id="produitId">
-          <div class="admin-form-grid">
-            <div class="form-group"><label>Titre *</label><input type="text" id="titreProduit" required placeholder="Nom du produit"></div>
-            <div class="form-group"><label>Catégorie</label><input type="text" id="categorieProduit" placeholder="Ex : Textile"></div>
-            <div class="form-group"><label>Prix unitaire (€) *</label><input type="number" step="0.01" id="prixProduit" required placeholder="0,00"></div>
-            <div class="form-group"><label>Quantité minimale *</label><input type="number" id="quantiteMinProduit" required placeholder="Ex : 50"></div>
-          </div>
-          <div class="form-group"><label>Description *</label><textarea id="descriptionProduit" rows="3" required placeholder="Description détaillée du produit..."></textarea></div>
-          <div class="form-group"><label>URL image</label><input type="text" id="imageProduit" placeholder="https://..."></div>
-          <div style="display:flex;gap:0.75rem;">
-            <button type="submit" class="btn-primary">Enregistrer</button>
-            <button type="button" class="btn-outline" onclick="resetForm()">Annuler</button>
-          </div>
-        </form>
-      </div>
-
-      <div class="card">
-        <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1.25rem;">Liste des produits</h2>
-        <div class="table-wrap">
-          <div id="listeProduitsAdmin"><p style="padding:1.5rem;color:var(--text-muted);font-size:0.875rem;">Chargement...</p></div>
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
+      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
     </div>
-  </main>
-  <footer></footer>
-  <script src="assets/js/supabase.js"></script>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/admin.js"></script>
-  <script>renderHeader('admin'); renderFooter();</script>
+  </div>
+</footer>
+
+<script>
+document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+  document.getElementById('navCenter')?.classList.toggle('open');
+});
+</script>
+<script src="assets/js/supabase.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/admin.js"></script>
 </body>
 </html>

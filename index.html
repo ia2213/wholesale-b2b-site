@@ -11,119 +11,189 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header></header>
-  <main>
 
-    <!-- HERO -->
-    <section class="hero">
+<header>
+  <div class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-icon">W</div>
+      <span class="nav-brand-name">WholesaleHub</span>
+    </a>
+    <div class="nav-center" id="navCenter">
+      <nav class="nav-links">
+        <a href="index.html" class="active">Accueil</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Ressources</a>
+        <a href="compte.html">Mon compte</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="navAuth">
+      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
+      <a href="compte.html" class="btn-primary btn-sm">Créer un compte</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div>
+      <div class="hero-badge">✦ Plateforme B2B professionnelle</div>
+      <h1>Centralisez vos achats grossiste, simplement.</h1>
+      <p>Commandez des lots, palettes et cartons complets auprès de fournisseurs fiables. Gagnez du temps sur chaque approvisionnement.</p>
+      <div class="hero-cta">
+        <a href="catalogue.html" class="btn-hero-primary">Voir le catalogue →</a>
+        <a href="compte.html" class="btn-hero-outline">Ouvrir un compte</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-title">Pourquoi WholesaleHub ?</div>
+        <ul>
+          <li><span class="hero-check">✓</span> Prix dégressifs selon les volumes</li>
+          <li><span class="hero-check">✓</span> Minimum de commande adapté B2B</li>
+          <li><span class="hero-check">✓</span> Suivi de commande en temps réel</li>
+          <li><span class="hero-check">✓</span> Compte sécurisé professionnel</li>
+          <li><span class="hero-check">✓</span> Catalogue mis à jour en continu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">✓</span> Livraison 48h France</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Paiement sécurisé</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Compte pro gratuit</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Support dédié B2B</div>
+    <div class="trust-item"><span class="trust-icon">✓</span> Factures automatiques</div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-card"><div class="stat-number">500+</div><div class="stat-label">Références produits</div></div>
+    <div class="stat-card"><div class="stat-number">1 200+</div><div class="stat-label">Clients professionnels</div></div>
+    <div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">Taux de satisfaction</div></div>
+    <div class="stat-card"><div class="stat-number">48h</div><div class="stat-label">Délai moyen livraison</div></div>
+  </div>
+
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Catégories phares</h2>
+      <p class="section-subtitle">Des gammes complètes pour chaque besoin professionnel</p>
+    </div>
+    <a href="catalogue.html" class="btn-outline btn-sm">Tout voir →</a>
+  </div>
+  <section class="grid-3">
+    <a href="catalogue.html" class="feature-card">
+      <div class="feature-icon">👕</div>
+      <h3>Textile</h3>
+      <p>Lots de t-shirts, sweats, casquettes pour la revente en grande quantité.</p>
+      <span class="feature-arrow">→</span>
+    </a>
+    <a href="catalogue.html" class="feature-card">
+      <div class="feature-icon">📦</div>
+      <h3>Emballage</h3>
+      <p>Cartons, palettes, films étirables et solutions d'emballage en gros.</p>
+      <span class="feature-arrow">→</span>
+    </a>
+    <a href="catalogue.html" class="feature-card">
+      <div class="feature-icon">🗒️</div>
+      <h3>Fournitures</h3>
+      <p>Fournitures de bureau et logistique pour les professionnels.</p>
+      <span class="feature-arrow">→</span>
+    </a>
+  </section>
+
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">Comment ça marche ?</h2>
+      <p class="section-subtitle">Commandez en 3 étapes simples</p>
+    </div>
+  </div>
+  <section class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <h3>Créez votre compte</h3>
+      <p>Inscrivez-vous gratuitement en tant que professionnel en moins de 2 minutes.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <h3>Passez commande</h3>
+      <p>Ajoutez vos lots au panier et validez votre commande en quelques clics.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <h3>Suivez la livraison</h3>
+      <p>Suivez vos commandes et factures depuis votre espace personnel sécurisé.</p>
+    </div>
+  </section>
+
+  <div class="banner-cta">
+    <div class="banner-cta-text">
+      <h3>🚚 Livraison rapide partout en France</h3>
+      <p>Commande avant 14h → expédition le jour même. Délai moyen constaté : 48h.</p>
+    </div>
+    <a href="compte.html" class="btn-blue">Ouvrir un compte →</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
       <div>
-        <div class="hero-badge">✦ Plateforme B2B professionnelle</div>
-        <h1>Centralisez vos achats grossiste, simplement.</h1>
-        <p>Commandez des lots, palettes et cartons complets auprès de fournisseurs fiables. Gagnez du temps sur chaque approvisionnement.</p>
-        <div class="hero-cta">
-          <a href="catalogue.html" class="btn-hero-primary">Voir le catalogue →</a>
-          <a href="compte.html#inscription" class="btn-hero-outline">Ouvrir un compte</a>
-        </div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
+        <p class="footer-desc">La plateforme B2B de référence pour les professionnels. Commandez vos lots, palettes et cartons complets directement en ligne.</p>
+        <a href="compte.html" class="btn-outline btn-sm" style="border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.8);display:inline-flex;margin-top:0.25rem;">Ouvrir un compte →</a>
       </div>
-      <div>
-        <div class="hero-card">
-          <div class="hero-card-title">Pourquoi WholesaleHub ?</div>
-          <ul>
-            <li><span class="hero-check">✓</span> Prix dégressifs selon les volumes</li>
-            <li><span class="hero-check">✓</span> Minimum de commande adapté B2B</li>
-            <li><span class="hero-check">✓</span> Suivi de commande en temps réel</li>
-            <li><span class="hero-check">✓</span> Compte sécurisé professionnel</li>
-            <li><span class="hero-check">✓</span> Catalogue mis à jour en continu</li>
-          </ul>
-        </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Plateforme</div>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="compte.html">Mon compte</a>
+        <a href="compte.html">Panier</a>
+        <a href="compte.html">Mes commandes</a>
       </div>
-    </section>
-
-    <!-- TRUST BAR -->
-    <div class="trust-bar">
-      <div class="trust-item"><span class="trust-icon">✓</span> Livraison 48h France</div>
-      <div class="trust-item"><span class="trust-icon">✓</span> Paiement sécurisé</div>
-      <div class="trust-item"><span class="trust-icon">✓</span> Compte pro gratuit</div>
-      <div class="trust-item"><span class="trust-icon">✓</span> Support dédié B2B</div>
-      <div class="trust-item"><span class="trust-icon">✓</span> Factures automatiques</div>
-    </div>
-
-    <!-- STATS -->
-    <div class="stats-strip">
-      <div class="stat-card"><div class="stat-number">500+</div><div class="stat-label">Références produits</div></div>
-      <div class="stat-card"><div class="stat-number">1 200+</div><div class="stat-label">Clients professionnels</div></div>
-      <div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">Taux de satisfaction</div></div>
-      <div class="stat-card"><div class="stat-number">48h</div><div class="stat-label">Délai moyen livraison</div></div>
-    </div>
-
-    <!-- CATEGORIES -->
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">Catégories phares</h2>
-        <p class="section-subtitle">Des gammes complètes pour chaque besoin professionnel</p>
+      <div class="footer-col">
+        <div class="footer-col-title">Ressources</div>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+        <a href="blog.html">Guide acheteur</a>
       </div>
-      <a href="catalogue.html" class="btn-outline btn-sm">Tout voir →</a>
-    </div>
-    <section class="grid-3">
-      <a href="catalogue.html" class="feature-card">
-        <div class="feature-icon">👕</div>
-        <h3>Textile</h3>
-        <p>Lots de t-shirts, sweats, casquettes pour la revente en grande quantité.</p>
-        <span class="feature-arrow">→</span>
-      </a>
-      <a href="catalogue.html" class="feature-card">
-        <div class="feature-icon">📦</div>
-        <h3>Emballage</h3>
-        <p>Cartons, palettes, films étirables et solutions d'emballage en gros.</p>
-        <span class="feature-arrow">→</span>
-      </a>
-      <a href="catalogue.html" class="feature-card">
-        <div class="feature-icon">🗒️</div>
-        <h3>Fournitures</h3>
-        <p>Fournitures de bureau et logistique pour les professionnels.</p>
-        <span class="feature-arrow">→</span>
-      </a>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">Comment ça marche ?</h2>
-        <p class="section-subtitle">Commandez en 3 étapes simples</p>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
+        <a href="#">Conditions générales</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
     </div>
-    <section class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Créez votre compte</h3>
-        <p>Inscrivez-vous gratuitement en tant que professionnel en moins de 2 minutes.</p>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGV</a>
+        <a href="#">RGPD</a>
       </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Passez commande</h3>
-        <p>Ajoutez vos lots au panier et validez votre commande en quelques clics.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Suivez la livraison</h3>
-        <p>Suivez vos commandes et factures depuis votre espace personnel sécurisé.</p>
-      </div>
-    </section>
-
-    <!-- BANNER -->
-    <div class="banner-cta">
-      <div class="banner-cta-text">
-        <h3>🚚 Livraison rapide partout en France</h3>
-        <p>Commande avant 14h → expédition le jour même. Délai moyen constaté : 48h.</p>
-      </div>
-      <a href="compte.html#inscription" class="btn-blue">Ouvrir un compte →</a>
     </div>
+  </div>
+</footer>
 
-  </main>
-  <footer></footer>
-  <script src="assets/js/supabase.js"></script>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>renderHeader('accueil'); renderFooter();</script>
+<script src="assets/js/supabase.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+  document.getElementById('navCenter')?.classList.toggle('open');
+});
+onSupabaseReady && onSupabaseReady(async()=>{
+  const {data:{session}} = await window.sb.auth.getSession();
+  if(!session) return;
+  const {data:p} = await window.sb.from('profiles').select('role,societe').eq('id',session.user.id).single();
+  const el = document.getElementById('navAuth');
+  if(!el) return;
+  el.innerHTML = (p?.role==='admin'?'<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>':'')
+    + `<span class="nav-user-name">${p?.societe||session.user.email}</span>`
+    + '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>'
+    + '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
+});
+</script>
 </body>
 </html>

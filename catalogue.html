@@ -10,45 +10,116 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header></header>
-  <main>
-    <div class="section-header" style="margin-bottom:1.5rem;">
+
+<header>
+  <div class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-icon">W</div>
+      <span class="nav-brand-name">WholesaleHub</span>
+    </a>
+    <div class="nav-center" id="navCenter">
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="catalogue.html" class="active">Catalogue</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Ressources</a>
+        <a href="compte.html">Mon compte</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="navAuth">
+      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
+      <a href="compte.html" class="btn-primary btn-sm">Créer un compte</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <div class="section-header" style="margin-bottom:1.5rem;">
+    <div>
+      <h1 class="section-title">Catalogue produits</h1>
+      <p class="section-subtitle" style="margin-bottom:0;">Tous nos lots disponibles à la commande B2B</p>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <form id="filtreForm" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;width:100%;">
+      <div style="flex:1 1 180px;">
+        <label for="categorie">Catégorie</label>
+        <select id="categorie">
+          <option value="">Toutes les catégories</option>
+          <option value="Textile">Textile</option>
+          <option value="Emballage">Emballage</option>
+          <option value="Fournitures">Fournitures</option>
+        </select>
+      </div>
+      <div style="flex:1 1 180px;">
+        <label for="minQuantite">Quantité min. commande</label>
+        <input type="number" id="minQuantite" min="0" placeholder="Ex : 50">
+      </div>
+      <div style="align-self:flex-end;">
+        <button type="submit" class="btn-primary">Filtrer</button>
+      </div>
+    </form>
+  </div>
+
+  <section id="listeProduits" class="product-grid">
+    <div class="empty-state">
+      <div class="empty-state-icon">📦</div>
+      <h3>Chargement des produits...</h3>
+      <p>Les produits apparaîtront ici une fois connecté à la base de données.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
       <div>
-        <h1 class="section-title">Catalogue produits</h1>
-        <p class="section-subtitle" style="margin-bottom:0;">Tous nos lots disponibles à la commande B2B</p>
+        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
+        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Plateforme</div>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="compte.html">Mon compte</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Ressources</div>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
       </div>
     </div>
-
-    <div class="filter-bar">
-      <form id="filtreForm" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;width:100%;">
-        <div style="flex:1 1 180px;">
-          <label for="categorie">Catégorie</label>
-          <select id="categorie">
-            <option value="">Toutes les catégories</option>
-            <option value="Textile">Textile</option>
-            <option value="Emballage">Emballage</option>
-            <option value="Fournitures">Fournitures</option>
-          </select>
-        </div>
-        <div style="flex:1 1 180px;">
-          <label for="minQuantite">Quantité min. commande</label>
-          <input type="number" id="minQuantite" min="0" placeholder="Ex : 50">
-        </div>
-        <div style="align-self:flex-end;">
-          <button type="submit" class="btn-primary">Filtrer</button>
-        </div>
-      </form>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
+      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
     </div>
+  </div>
+</footer>
 
-    <section id="listeProduits" class="product-grid">
-      <p style="color:var(--text-muted);font-size:0.875rem;">Chargement des produits...</p>
-    </section>
-  </main>
-  <footer></footer>
-  <script src="assets/js/supabase.js"></script>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/catalogue.js"></script>
-  <script>renderHeader('catalogue'); renderFooter();</script>
+<script src="assets/js/supabase.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/catalogue.js"></script>
+<script>
+document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+  document.getElementById('navCenter')?.classList.toggle('open');
+});
+onSupabaseReady && onSupabaseReady(async()=>{
+  const {data:{session}} = await window.sb.auth.getSession();
+  if(!session) return;
+  const {data:p} = await window.sb.from('profiles').select('role,societe').eq('id',session.user.id).single();
+  const el = document.getElementById('navAuth');
+  if(!el) return;
+  el.innerHTML = (p?.role==='admin'?'<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>':'')
+    + `<span class="nav-user-name">${p?.societe||session.user.email}</span>`
+    + '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>'
+    + '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
+});
+</script>
 </body>
 </html>

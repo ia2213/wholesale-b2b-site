@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon espace — WholesaleHub</title>
+  <title>Mon compte — WholesaleHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,77 +10,153 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header></header>
-  <main>
-    <div style="max-width:860px;">
-      <h1 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.25rem;">Mon espace</h1>
-      <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:1.75rem;">Gérez votre compte, votre panier et vos commandes</p>
 
-      <div class="tab-list">
-        <button class="tab-btn" data-tab="connexion">Connexion</button>
-        <button class="tab-btn" data-tab="inscription">Créer un compte</button>
-        <button class="tab-btn" data-tab="panier">Panier</button>
-        <button class="tab-btn" data-tab="commandes">Mes commandes</button>
+<header>
+  <div class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-icon">W</div>
+      <span class="nav-brand-name">WholesaleHub</span>
+    </a>
+    <div class="nav-center" id="navCenter">
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Ressources</a>
+        <a href="compte.html" class="active">Mon compte</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="navAuth">
+      <a href="compte.html" class="btn-outline btn-sm">Connexion</a>
+      <a href="compte.html" class="btn-primary btn-sm">Créer un compte</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <div id="zoneAuth">
+    <!-- Auth tabs -->
+    <div style="max-width:440px;margin:0 auto;">
+      <div class="tab-list" id="authTabs">
+        <button class="tab-btn active" onclick="switchTab('connexion')">Connexion</button>
+        <button class="tab-btn" onclick="switchTab('inscription')">Créer un compte</button>
       </div>
 
-      <div class="compte-tab" id="tab-connexion">
-        <div class="auth-card">
-          <h2 class="auth-title">Connexion</h2>
-          <p class="auth-subtitle">Accédez à votre espace professionnel</p>
-          <div id="msgLogin"></div>
-          <div class="form-group"><label>Adresse e-mail</label><input type="email" id="loginEmail" placeholder="vous@societe.com"></div>
-          <div class="form-group"><label>Mot de passe</label><input type="password" id="loginMdp" placeholder="••••••••"></div>
-          <button id="btnLogin" class="btn-primary" style="width:100%;padding:0.625rem;">Se connecter</button>
-          <p style="font-size:0.8125rem;color:var(--text-muted);text-align:center;margin-top:1rem;">Pas encore de compte ? <a href="#" onclick="switchTab('inscription')" style="color:var(--accent);font-weight:600;">Créer un compte →</a></p>
-        </div>
+      <!-- CONNEXION -->
+      <div id="tab-connexion" class="auth-card">
+        <h2 class="auth-title">Connexion</h2>
+        <p class="auth-subtitle">Accédez à votre espace professionnel.</p>
+        <form id="formConnexion">
+          <div class="form-group">
+            <label for="emailCo">Email professionnel</label>
+            <input type="email" id="emailCo" placeholder="email@societe.fr" required>
+          </div>
+          <div class="form-group">
+            <label for="mdpCo">Mot de passe</label>
+            <input type="password" id="mdpCo" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Se connecter</button>
+        </form>
+        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">
+          Pas encore de compte ? <a href="#" onclick="switchTab('inscription')" style="color:var(--accent);font-weight:600;">S'inscrire</a>
+        </p>
+        <div id="msgConnexion"></div>
       </div>
 
-      <div class="compte-tab" id="tab-inscription">
-        <div class="auth-card">
-          <h2 class="auth-title">Créer un compte professionnel</h2>
-          <p class="auth-subtitle">Accès gratuit, sans engagement</p>
-          <div id="msgReg"></div>
-          <div class="form-group"><label>Nom de société</label><input type="text" id="regSociete" placeholder="Ma Société SAS"></div>
-          <div class="form-group"><label>E-mail professionnel</label><input type="email" id="regEmail" placeholder="vous@societe.com"></div>
-          <div class="form-group"><label>Mot de passe <span style="color:var(--text-light);font-weight:400;">(6 caractères min.)</span></label><input type="password" id="regMdp" placeholder="••••••••"></div>
-          <button id="btnReg" class="btn-primary" style="width:100%;padding:0.625rem;">Créer mon compte</button>
-          <p style="font-size:0.8125rem;color:var(--text-muted);text-align:center;margin-top:1rem;">Déjà un compte ? <a href="#" onclick="switchTab('connexion')" style="color:var(--accent);font-weight:600;">Se connecter →</a></p>
-        </div>
-      </div>
-
-      <div class="compte-tab" id="tab-panier">
-        <div class="card" style="margin-bottom:1rem;">
-          <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1.25rem;">Informations de livraison</h2>
-          <div class="form-group"><label>Société</label><input type="text" id="societe"></div>
-          <div class="form-group"><label>Adresse de livraison</label><textarea id="adresse" rows="3" placeholder="Rue, code postal, ville"></textarea></div>
-        </div>
-        <div class="card" style="margin-bottom:1rem;">
-          <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1rem;">Récapitulatif panier</h2>
-          <div id="panierContainer"></div>
-        </div>
-        <div style="display:flex;justify-content:flex-end;gap:1rem;align-items:center;">
-          <div id="messageCommande"></div>
-          <button id="btnValiderCommande" class="btn-primary" style="padding:0.625rem 1.5rem;">Valider la commande →</button>
-        </div>
-      </div>
-
-      <div class="compte-tab" id="tab-commandes">
-        <h2 style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;">Mes commandes</h2>
-        <div id="commandesContainer"><p style="color:var(--text-muted);font-size:0.875rem;">Chargement...</p></div>
+      <!-- INSCRIPTION -->
+      <div id="tab-inscription" class="auth-card" style="display:none;">
+        <h2 class="auth-title">Créer un compte</h2>
+        <p class="auth-subtitle">Rejoignez la plateforme B2B gratuitement.</p>
+        <form id="formInscription">
+          <div class="form-group">
+            <label for="societe">Nom de société</label>
+            <input type="text" id="societe" placeholder="Ma Société SAS" required>
+          </div>
+          <div class="form-group">
+            <label for="emailIns">Email professionnel</label>
+            <input type="email" id="emailIns" placeholder="email@societe.fr" required>
+          </div>
+          <div class="form-group">
+            <label for="mdpIns">Mot de passe</label>
+            <input type="password" id="mdpIns" placeholder="8 caractères minimum" required minlength="8">
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Créer mon compte</button>
+        </form>
+        <p style="margin-top:1rem;font-size:0.8125rem;color:var(--text-muted);text-align:center;">
+          Déjà un compte ? <a href="#" onclick="switchTab('connexion')" style="color:var(--accent);font-weight:600;">Se connecter</a>
+        </p>
+        <div id="msgInscription"></div>
       </div>
     </div>
-  </main>
-  <footer></footer>
-  <script src="assets/js/supabase.js"></script>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/compte.js"></script>
-  <script>
-    renderHeader('compte'); renderFooter();
-    function switchTab(name) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-      document.querySelectorAll('.compte-tab').forEach(t => t.style.display = t.id === 'tab-' + name ? 'block' : 'none');
-    }
-  </script>
+  </div>
+
+  <!-- ESPACE CONNECTE -->
+  <div id="zoneCompte" style="display:none;">
+    <div class="tab-list">
+      <button class="tab-btn active" onclick="switchCompteTab('profil')">Profil</button>
+      <button class="tab-btn" onclick="switchCompteTab('commandes')">Mes commandes</button>
+      <button class="tab-btn" onclick="switchCompteTab('panier')">Panier</button>
+    </div>
+    <div id="compte-profil" class="compte-tab" style="display:block;"><div class="card"><p style="color:var(--text-muted);">Chargement du profil...</p></div></div>
+    <div id="compte-commandes" class="compte-tab"><div class="card"><p style="color:var(--text-muted);">Chargement des commandes...</p></div></div>
+    <div id="compte-panier" class="compte-tab"><div class="card"><p style="color:var(--text-muted);">Chargement du panier...</p></div></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name"><div class="footer-brand-icon">W</div>WholesaleHub</div>
+        <p class="footer-desc">La plateforme B2B de référence pour les professionnels.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Plateforme</div>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="compte.html">Mon compte</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Ressources</div>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 WholesaleHub — Tous droits réservés.</span>
+      <div class="footer-legal"><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">RGPD</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function switchTab(tab) {
+  ['connexion','inscription'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
+    document.querySelectorAll('#authTabs .tab-btn').forEach((btn,i) => {
+      btn.classList.toggle('active', (i===0 && tab==='connexion') || (i===1 && tab==='inscription'));
+    });
+  });
+  if(tab==='inscription') history.replaceState(null,'','#inscription');
+}
+function switchCompteTab(tab) {
+  document.querySelectorAll('.compte-tab').forEach(el => el.style.display='none');
+  document.getElementById('compte-'+tab).style.display = 'block';
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+if(location.hash==='#inscription') switchTab('inscription');
+document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+  document.getElementById('navCenter')?.classList.toggle('open');
+});
+</script>
+<script src="assets/js/supabase.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/compte.js"></script>
 </body>
 </html>
