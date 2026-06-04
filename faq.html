@@ -8,23 +8,29 @@
 </head>
 <body>
   <header></header>
-
   <main>
     <h1 class="section-title">Questions fréquentes</h1>
-
-    <section class="card" style="margin-bottom:0.75rem;"><h3>Qui peut commander sur la plateforme ?</h3><p>La plateforme est dédiée aux professionnels : revendeurs, commerces, associations et entreprises.</p></section>
-    <section class="card" style="margin-bottom:0.75rem;"><h3>Y a-t-il un montant minimum de commande ?</h3><p>Chaque produit possède une quantité minimale de commande en cohérence avec la vente en gros.</p></section>
-    <section class="card" style="margin-bottom:0.75rem;"><h3>Quels sont les délais de livraison ?</h3><p>Les délais varient selon le type de produit et la destination. Ils sont indiqués sur le récapitulatif de commande.</p></section>
-    <section class="card"><h3>Quels moyens de paiement acceptez-vous ?</h3><p>Carte bancaire, virement bancaire et, après validation, paiement à 30 jours fin de mois pour certains clients.</p></section>
+    <div class="faq-item">
+      <h3>👤 Qui peut commander sur la plateforme ?</h3>
+      <p>La plateforme est dédiée aux professionnels : revendeurs, commerces, associations et entreprises. Une inscription est requise.</p>
+    </div>
+    <div class="faq-item">
+      <h3>💰 Y a-t-il un montant minimum de commande ?</h3>
+      <p>Chaque produit possède une quantité minimale de commande affichée sur sa fiche. Elle est adaptée à la logique B2B.</p>
+    </div>
+    <div class="faq-item">
+      <h3>🚚 Quels sont les délais de livraison ?</h3>
+      <p>Les délais varient selon le produit et la destination. En moyenne 48h en France métropolitaine. Indiqués sur le récapitulatif de commande.</p>
+    </div>
+    <div class="faq-item">
+      <h3>💳 Quels moyens de paiement acceptez-vous ?</h3>
+      <p>Carte bancaire, virement bancaire et, après validation de votre compte, paiement à 30 jours fin de mois pour certains clients.</p>
+    </div>
   </main>
-
   <footer></footer>
-
+  <script src="assets/js/supabase.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    renderHeader('faq');
-    renderFooter();
-  </script>
+  <script>renderHeader('faq'); renderFooter();</script>
 </body>
 </html>

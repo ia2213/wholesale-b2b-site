@@ -3,15 +3,18 @@ function renderProduits(liste) {
   if (!cont) return;
   if (!liste.length) { cont.innerHTML = '<p>Aucun produit ne correspond à vos filtres.</p>'; return; }
   cont.innerHTML = liste.map(p => `
-    <article class="card product-card">
+    <article class="product-card">
+      <div class="product-card-banner"></div>
       <img src="${p.image_url || 'https://via.placeholder.com/400x300?text=Produit'}" alt="${p.titre}">
-      <h3>${p.titre}</h3>
-      <div class="product-meta">${p.categorie || ''}</div>
-      <div class="product-meta">Quantité min : ${p.quantite_min} unités</div>
-      <div class="product-price">${formatPrix(p.prix_unitaire)} / unité</div>
-      <div class="product-actions">
-        <input type="number" min="${p.quantite_min}" value="${p.quantite_min}" id="qte-${p.id}" style="max-width:90px;">
-        <button class="btn-primary" onclick="ajouterDepuisCatalogue(${p.id})">Ajouter</button>
+      <div class="product-card-body">
+        <h3>${p.titre}</h3>
+        <div class="product-meta">🏷️ ${p.categorie || ''}</div>
+        <div class="product-meta">📦 Quantité min : <strong>${p.quantite_min}</strong> unités</div>
+        <div class="product-price">${formatPrix(p.prix_unitaire)} <span style="font-size:0.75rem;font-weight:500;color:var(--text-muted);">/ unité</span></div>
+        <div class="product-actions">
+          <input type="number" min="${p.quantite_min}" value="${p.quantite_min}" id="qte-${p.id}">
+          <button class="btn-blue" onclick="ajouterDepuisCatalogue(${p.id})">+ Ajouter</button>
+        </div>
       </div>
     </article>
   `).join('');
