@@ -5,53 +5,48 @@
   <title>Mon compte - B2B Wholesale Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    .tab-btn { background:#f3f4f6; border:1px solid #e5e7eb; padding:0.4rem 1rem; border-radius:999px; margin-right:0.5rem; cursor:pointer; font-size:0.9rem; }
-    .tab-btn.active { background:var(--primary); color:white; border-color:var(--primary); }
-    .compte-tab { display:none; margin-top:1rem; }
-  </style>
 </head>
 <body>
   <header></header>
   <main>
     <h1 class="section-title">Mon espace</h1>
-    <div style="margin-bottom:1rem;">
+    <div style="margin-bottom:1rem;flex-wrap:wrap;display:flex;">
       <button class="tab-btn" data-tab="connexion">Se connecter</button>
       <button class="tab-btn" data-tab="inscription">Créer un compte</button>
-      <button class="tab-btn" data-tab="panier">Panier</button>
-      <button class="tab-btn" data-tab="commandes">Mes commandes</button>
+      <button class="tab-btn" data-tab="panier">🛒 Panier</button>
+      <button class="tab-btn" data-tab="commandes">📦 Mes commandes</button>
     </div>
     <div class="compte-tab" id="tab-connexion">
-      <div class="card">
-        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Connexion</h2>
+      <div class="card" style="max-width:420px;">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;color:var(--primary-dark);">Connexion</h2>
         <div id="msgLogin"></div>
-        <div class="form-group"><label>E-mail</label><input type="email" id="loginEmail"></div>
-        <div class="form-group"><label>Mot de passe</label><input type="password" id="loginMdp"></div>
-        <button id="btnLogin" class="btn-primary">Se connecter</button>
+        <div class="form-group"><label>E-mail</label><input type="email" id="loginEmail" placeholder="vous@exemple.com"></div>
+        <div class="form-group"><label>Mot de passe</label><input type="password" id="loginMdp" placeholder="••••••••"></div>
+        <button id="btnLogin" class="btn-primary" style="width:100%;padding:0.65rem;">Se connecter</button>
       </div>
     </div>
     <div class="compte-tab" id="tab-inscription">
-      <div class="card">
-        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Créer un compte</h2>
+      <div class="card" style="max-width:420px;">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;color:var(--primary-dark);">Créer un compte professionnel</h2>
         <div id="msgReg"></div>
-        <div class="form-group"><label>Société</label><input type="text" id="regSociete"></div>
-        <div class="form-group"><label>E-mail professionnel</label><input type="email" id="regEmail"></div>
-        <div class="form-group"><label>Mot de passe (min. 6 caractères)</label><input type="password" id="regMdp"></div>
-        <button id="btnReg" class="btn-primary">Créer mon compte</button>
+        <div class="form-group"><label>Société</label><input type="text" id="regSociete" placeholder="Ma Société SAS"></div>
+        <div class="form-group"><label>E-mail professionnel</label><input type="email" id="regEmail" placeholder="vous@societe.com"></div>
+        <div class="form-group"><label>Mot de passe (min. 6 caractères)</label><input type="password" id="regMdp" placeholder="••••••••"></div>
+        <button id="btnReg" class="btn-primary" style="width:100%;padding:0.65rem;">Créer mon compte</button>
       </div>
     </div>
     <div class="compte-tab" id="tab-panier">
       <div class="card" style="margin-bottom:1rem;">
-        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Informations de livraison</h2>
+        <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--primary-dark);">Informations de livraison</h2>
         <div class="form-group"><label>Société</label><input type="text" id="societe"></div>
         <div class="form-group"><label>Adresse de livraison</label><textarea id="adresse" rows="2"></textarea></div>
       </div>
       <div class="card" style="margin-bottom:1rem;">
-        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Panier</h2>
+        <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--primary-dark);">Panier</h2>
         <div id="panierContainer"></div>
       </div>
       <div class="card">
-        <button id="btnValiderCommande" class="btn-primary">Valider la commande</button>
+        <button id="btnValiderCommande" class="btn-primary" style="padding:0.65rem 1.5rem;">Valider la commande</button>
         <div id="messageCommande" style="margin-top:0.75rem;"></div>
       </div>
     </div>
