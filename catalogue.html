@@ -35,6 +35,7 @@
 </header>
 
 <main>
+
   <div class="section-header" style="margin-bottom:1.5rem;">
     <div>
       <h1 class="section-title">Catalogue produits</h1>
@@ -64,12 +65,13 @@
   </div>
 
   <section id="listeProduits" class="product-grid">
-    <div class="empty-state">
+    <div class="empty-state" style="grid-column:1/-1;">
       <div class="empty-state-icon">📦</div>
       <h3>Chargement des produits...</h3>
       <p>Les produits apparaîtront ici une fois connecté à la base de données.</p>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -83,15 +85,20 @@
         <div class="footer-col-title">Plateforme</div>
         <a href="catalogue.html">Catalogue</a>
         <a href="compte.html">Mon compte</a>
+        <a href="compte.html">Panier</a>
+        <a href="compte.html">Mes commandes</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Ressources</div>
         <a href="faq.html">FAQ</a>
         <a href="blog.html">Blog</a>
+        <a href="blog.html">Guide acheteur</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Contact</div>
         <a href="mailto:contact@wholesalehub.fr">contact@wholesalehub.fr</a>
+        <a href="#">Conditions générales</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -106,19 +113,20 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/catalogue.js"></script>
 <script>
-document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+document.getElementById('burgerBtn')?.addEventListener('click', () => {
   document.getElementById('navCenter')?.classList.toggle('open');
 });
-onSupabaseReady && onSupabaseReady(async()=>{
-  const {data:{session}} = await window.sb.auth.getSession();
-  if(!session) return;
-  const {data:p} = await window.sb.from('profiles').select('role,societe').eq('id',session.user.id).single();
+onSupabaseReady && onSupabaseReady(async () => {
+  const { data: { session } } = await window.sb.auth.getSession();
+  if (!session) return;
+  const { data: p } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
   const el = document.getElementById('navAuth');
-  if(!el) return;
-  el.innerHTML = (p?.role==='admin'?'<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>':'')
-    + `<span class="nav-user-name">${p?.societe||session.user.email}</span>`
-    + '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>'
-    + '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
+  if (!el) return;
+  el.innerHTML =
+    (p?.role === 'admin' ? '<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>' : '') +
+    `<span class="nav-user-name">${p?.societe || session.user.email}</span>` +
+    '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>' +
+    '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
 });
 </script>
 </body>

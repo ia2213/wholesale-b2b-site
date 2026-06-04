@@ -35,9 +35,12 @@
 </header>
 
 <main>
-  <div style="margin-bottom:2rem;">
-    <h1 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.375rem;">Blog & Ressources</h1>
-    <p style="color:var(--text-muted);font-size:0.9375rem;">Conseils, guides et actualités pour les acheteurs professionnels.</p>
+
+  <div class="section-header">
+    <div>
+      <h1 class="section-title">Blog &amp; Ressources</h1>
+      <p class="section-subtitle">Conseils, guides et actualités pour les acheteurs professionnels.</p>
+    </div>
   </div>
 
   <div class="blog-grid">
@@ -99,6 +102,7 @@
     </article>
 
   </div>
+
 </main>
 
 <footer>
@@ -131,23 +135,24 @@
 </footer>
 
 <script>
-document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+document.getElementById('burgerBtn')?.addEventListener('click', () => {
   document.getElementById('navCenter')?.classList.toggle('open');
 });
 </script>
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-onSupabaseReady && onSupabaseReady(async()=>{
-  const {data:{session}} = await window.sb.auth.getSession();
-  if(!session) return;
-  const {data:p} = await window.sb.from('profiles').select('role,societe').eq('id',session.user.id).single();
+onSupabaseReady && onSupabaseReady(async () => {
+  const { data: { session } } = await window.sb.auth.getSession();
+  if (!session) return;
+  const { data: p } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
   const el = document.getElementById('navAuth');
-  if(!el) return;
-  el.innerHTML = (p?.role==='admin'?'<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>':'')
-    + `<span class="nav-user-name">${p?.societe||session.user.email}</span>`
-    + '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>'
-    + '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
+  if (!el) return;
+  el.innerHTML =
+    (p?.role === 'admin' ? '<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>' : '') +
+    `<span class="nav-user-name">${p?.societe || session.user.email}</span>` +
+    '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>' +
+    '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
 });
 </script>
 </body>

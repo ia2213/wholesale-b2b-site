@@ -35,15 +35,15 @@
 </header>
 
 <main>
+
+  <!-- NON CONNECTÉ -->
   <div id="zoneAuth">
-    <!-- Auth tabs -->
     <div style="max-width:440px;margin:0 auto;">
       <div class="tab-list" id="authTabs">
         <button class="tab-btn active" onclick="switchTab('connexion')">Connexion</button>
         <button class="tab-btn" onclick="switchTab('inscription')">Créer un compte</button>
       </div>
 
-      <!-- CONNEXION -->
       <div id="tab-connexion" class="auth-card">
         <h2 class="auth-title">Connexion</h2>
         <p class="auth-subtitle">Accédez à votre espace professionnel.</p>
@@ -64,7 +64,6 @@
         <div id="msgConnexion"></div>
       </div>
 
-      <!-- INSCRIPTION -->
       <div id="tab-inscription" class="auth-card" style="display:none;">
         <h2 class="auth-title">Créer un compte</h2>
         <p class="auth-subtitle">Rejoignez la plateforme B2B gratuitement.</p>
@@ -91,17 +90,18 @@
     </div>
   </div>
 
-  <!-- ESPACE CONNECTE -->
+  <!-- CONNECTÉ -->
   <div id="zoneCompte" style="display:none;">
-    <div class="tab-list">
-      <button class="tab-btn active" onclick="switchCompteTab('profil')">Profil</button>
-      <button class="tab-btn" onclick="switchCompteTab('commandes')">Mes commandes</button>
-      <button class="tab-btn" onclick="switchCompteTab('panier')">Panier</button>
+    <div class="tab-list" id="compteTabs">
+      <button class="tab-btn active" onclick="switchCompteTab('profil', this)">Profil</button>
+      <button class="tab-btn" onclick="switchCompteTab('commandes', this)">Mes commandes</button>
+      <button class="tab-btn" onclick="switchCompteTab('panier', this)">Panier</button>
     </div>
     <div id="compte-profil" class="compte-tab" style="display:block;"><div class="card"><p style="color:var(--text-muted);">Chargement du profil...</p></div></div>
     <div id="compte-commandes" class="compte-tab"><div class="card"><p style="color:var(--text-muted);">Chargement des commandes...</p></div></div>
     <div id="compte-panier" class="compte-tab"><div class="card"><p style="color:var(--text-muted);">Chargement du panier...</p></div></div>
   </div>
+
 </main>
 
 <footer>
@@ -135,22 +135,21 @@
 
 <script>
 function switchTab(tab) {
-  ['connexion','inscription'].forEach(t => {
-    document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
-    document.querySelectorAll('#authTabs .tab-btn').forEach((btn,i) => {
-      btn.classList.toggle('active', (i===0 && tab==='connexion') || (i===1 && tab==='inscription'));
-    });
+  document.getElementById('tab-connexion').style.display = tab === 'connexion' ? 'block' : 'none';
+  document.getElementById('tab-inscription').style.display = tab === 'inscription' ? 'block' : 'none';
+  document.querySelectorAll('#authTabs .tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i === 0 && tab === 'connexion') || (i === 1 && tab === 'inscription'));
   });
-  if(tab==='inscription') history.replaceState(null,'','#inscription');
+  if (tab === 'inscription') history.replaceState(null, '', '#inscription');
 }
-function switchCompteTab(tab) {
-  document.querySelectorAll('.compte-tab').forEach(el => el.style.display='none');
-  document.getElementById('compte-'+tab).style.display = 'block';
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
+function switchCompteTab(tab, btn) {
+  document.querySelectorAll('.compte-tab').forEach(el => el.style.display = 'none');
+  document.getElementById('compte-' + tab).style.display = 'block';
+  document.querySelectorAll('#compteTabs .tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
 }
-if(location.hash==='#inscription') switchTab('inscription');
-document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+if (location.hash === '#inscription') switchTab('inscription');
+document.getElementById('burgerBtn')?.addEventListener('click', () => {
   document.getElementById('navCenter')?.classList.toggle('open');
 });
 </script>

@@ -37,6 +37,7 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero">
     <div>
       <div class="hero-badge">✦ Plateforme B2B professionnelle</div>
@@ -61,6 +62,7 @@
     </div>
   </section>
 
+  <!-- TRUST BAR -->
   <div class="trust-bar">
     <div class="trust-item"><span class="trust-icon">✓</span> Livraison 48h France</div>
     <div class="trust-item"><span class="trust-icon">✓</span> Paiement sécurisé</div>
@@ -69,6 +71,7 @@
     <div class="trust-item"><span class="trust-icon">✓</span> Factures automatiques</div>
   </div>
 
+  <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-card"><div class="stat-number">500+</div><div class="stat-label">Références produits</div></div>
     <div class="stat-card"><div class="stat-number">1 200+</div><div class="stat-label">Clients professionnels</div></div>
@@ -76,6 +79,7 @@
     <div class="stat-card"><div class="stat-number">48h</div><div class="stat-label">Délai moyen livraison</div></div>
   </div>
 
+  <!-- CATEGORIES -->
   <div class="section-header">
     <div>
       <h2 class="section-title">Catégories phares</h2>
@@ -104,6 +108,7 @@
     </a>
   </section>
 
+  <!-- HOW IT WORKS -->
   <div class="section-header">
     <div>
       <h2 class="section-title">Comment ça marche ?</h2>
@@ -128,6 +133,7 @@
     </div>
   </section>
 
+  <!-- BANNER -->
   <div class="banner-cta">
     <div class="banner-cta-text">
       <h3>🚚 Livraison rapide partout en France</h3>
@@ -180,19 +186,20 @@
 <script src="assets/js/supabase.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
-document.getElementById('burgerBtn')?.addEventListener('click',()=>{
+document.getElementById('burgerBtn')?.addEventListener('click', () => {
   document.getElementById('navCenter')?.classList.toggle('open');
 });
-onSupabaseReady && onSupabaseReady(async()=>{
-  const {data:{session}} = await window.sb.auth.getSession();
-  if(!session) return;
-  const {data:p} = await window.sb.from('profiles').select('role,societe').eq('id',session.user.id).single();
+onSupabaseReady && onSupabaseReady(async () => {
+  const { data: { session } } = await window.sb.auth.getSession();
+  if (!session) return;
+  const { data: p } = await window.sb.from('profiles').select('role,societe').eq('id', session.user.id).single();
   const el = document.getElementById('navAuth');
-  if(!el) return;
-  el.innerHTML = (p?.role==='admin'?'<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>':'')
-    + `<span class="nav-user-name">${p?.societe||session.user.email}</span>`
-    + '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>'
-    + '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
+  if (!el) return;
+  el.innerHTML =
+    (p?.role === 'admin' ? '<a href="admin.html" class="btn-outline btn-sm">⚙ Admin</a>' : '') +
+    `<span class="nav-user-name">${p?.societe || session.user.email}</span>` +
+    '<a href="compte.html" class="btn-outline btn-sm">Mon espace</a>' +
+    '<button class="btn-primary btn-sm" onclick="(async()=>{await window.sb.auth.signOut();location.href=\'index.html\';})();">Déconnexion</button>';
 });
 </script>
 </body>
