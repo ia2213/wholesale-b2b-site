@@ -2,57 +2,72 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon compte - B2B Wholesale Hub</title>
+  <title>Mon espace — WholesaleHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <header></header>
   <main>
-    <h1 class="section-title">Mon espace</h1>
-    <div style="margin-bottom:1rem;flex-wrap:wrap;display:flex;">
-      <button class="tab-btn" data-tab="connexion">Se connecter</button>
-      <button class="tab-btn" data-tab="inscription">Créer un compte</button>
-      <button class="tab-btn" data-tab="panier">🛒 Panier</button>
-      <button class="tab-btn" data-tab="commandes">📦 Mes commandes</button>
-    </div>
-    <div class="compte-tab" id="tab-connexion">
-      <div class="card" style="max-width:420px;">
-        <h2 style="font-size:1.1rem;margin-bottom:1rem;color:var(--primary-dark);">Connexion</h2>
-        <div id="msgLogin"></div>
-        <div class="form-group"><label>E-mail</label><input type="email" id="loginEmail" placeholder="vous@exemple.com"></div>
-        <div class="form-group"><label>Mot de passe</label><input type="password" id="loginMdp" placeholder="••••••••"></div>
-        <button id="btnLogin" class="btn-primary" style="width:100%;padding:0.65rem;">Se connecter</button>
+    <div style="max-width:860px;">
+      <h1 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.25rem;">Mon espace</h1>
+      <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:1.75rem;">Gérez votre compte, votre panier et vos commandes</p>
+
+      <div class="tab-list">
+        <button class="tab-btn" data-tab="connexion">Connexion</button>
+        <button class="tab-btn" data-tab="inscription">Créer un compte</button>
+        <button class="tab-btn" data-tab="panier">Panier</button>
+        <button class="tab-btn" data-tab="commandes">Mes commandes</button>
       </div>
-    </div>
-    <div class="compte-tab" id="tab-inscription">
-      <div class="card" style="max-width:420px;">
-        <h2 style="font-size:1.1rem;margin-bottom:1rem;color:var(--primary-dark);">Créer un compte professionnel</h2>
-        <div id="msgReg"></div>
-        <div class="form-group"><label>Société</label><input type="text" id="regSociete" placeholder="Ma Société SAS"></div>
-        <div class="form-group"><label>E-mail professionnel</label><input type="email" id="regEmail" placeholder="vous@societe.com"></div>
-        <div class="form-group"><label>Mot de passe (min. 6 caractères)</label><input type="password" id="regMdp" placeholder="••••••••"></div>
-        <button id="btnReg" class="btn-primary" style="width:100%;padding:0.65rem;">Créer mon compte</button>
+
+      <div class="compte-tab" id="tab-connexion">
+        <div class="auth-card">
+          <h2 class="auth-title">Connexion</h2>
+          <p class="auth-subtitle">Accédez à votre espace professionnel</p>
+          <div id="msgLogin"></div>
+          <div class="form-group"><label>Adresse e-mail</label><input type="email" id="loginEmail" placeholder="vous@societe.com"></div>
+          <div class="form-group"><label>Mot de passe</label><input type="password" id="loginMdp" placeholder="••••••••"></div>
+          <button id="btnLogin" class="btn-primary" style="width:100%;padding:0.625rem;">Se connecter</button>
+          <p style="font-size:0.8125rem;color:var(--text-muted);text-align:center;margin-top:1rem;">Pas encore de compte ? <a href="#" onclick="switchTab('inscription')" style="color:var(--accent);font-weight:600;">Créer un compte →</a></p>
+        </div>
       </div>
-    </div>
-    <div class="compte-tab" id="tab-panier">
-      <div class="card" style="margin-bottom:1rem;">
-        <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--primary-dark);">Informations de livraison</h2>
-        <div class="form-group"><label>Société</label><input type="text" id="societe"></div>
-        <div class="form-group"><label>Adresse de livraison</label><textarea id="adresse" rows="2"></textarea></div>
+
+      <div class="compte-tab" id="tab-inscription">
+        <div class="auth-card">
+          <h2 class="auth-title">Créer un compte professionnel</h2>
+          <p class="auth-subtitle">Accès gratuit, sans engagement</p>
+          <div id="msgReg"></div>
+          <div class="form-group"><label>Nom de société</label><input type="text" id="regSociete" placeholder="Ma Société SAS"></div>
+          <div class="form-group"><label>E-mail professionnel</label><input type="email" id="regEmail" placeholder="vous@societe.com"></div>
+          <div class="form-group"><label>Mot de passe <span style="color:var(--text-light);font-weight:400;">(6 caractères min.)</span></label><input type="password" id="regMdp" placeholder="••••••••"></div>
+          <button id="btnReg" class="btn-primary" style="width:100%;padding:0.625rem;">Créer mon compte</button>
+          <p style="font-size:0.8125rem;color:var(--text-muted);text-align:center;margin-top:1rem;">Déjà un compte ? <a href="#" onclick="switchTab('connexion')" style="color:var(--accent);font-weight:600;">Se connecter →</a></p>
+        </div>
       </div>
-      <div class="card" style="margin-bottom:1rem;">
-        <h2 style="font-size:1rem;margin-bottom:0.75rem;color:var(--primary-dark);">Panier</h2>
-        <div id="panierContainer"></div>
+
+      <div class="compte-tab" id="tab-panier">
+        <div class="card" style="margin-bottom:1rem;">
+          <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1.25rem;">Informations de livraison</h2>
+          <div class="form-group"><label>Société</label><input type="text" id="societe"></div>
+          <div class="form-group"><label>Adresse de livraison</label><textarea id="adresse" rows="3" placeholder="Rue, code postal, ville"></textarea></div>
+        </div>
+        <div class="card" style="margin-bottom:1rem;">
+          <h2 style="font-size:1rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:1rem;">Récapitulatif panier</h2>
+          <div id="panierContainer"></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:1rem;align-items:center;">
+          <div id="messageCommande"></div>
+          <button id="btnValiderCommande" class="btn-primary" style="padding:0.625rem 1.5rem;">Valider la commande →</button>
+        </div>
       </div>
-      <div class="card">
-        <button id="btnValiderCommande" class="btn-primary" style="padding:0.65rem 1.5rem;">Valider la commande</button>
-        <div id="messageCommande" style="margin-top:0.75rem;"></div>
+
+      <div class="compte-tab" id="tab-commandes">
+        <h2 style="font-size:1.125rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:1.25rem;">Mes commandes</h2>
+        <div id="commandesContainer"><p style="color:var(--text-muted);font-size:0.875rem;">Chargement...</p></div>
       </div>
-    </div>
-    <div class="compte-tab" id="tab-commandes">
-      <h2 class="section-title">Mes commandes</h2>
-      <div id="commandesContainer"><p>Chargement...</p></div>
     </div>
   </main>
   <footer></footer>
@@ -60,6 +75,12 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/compte.js"></script>
-  <script>renderHeader('compte'); renderFooter();</script>
+  <script>
+    renderHeader('compte'); renderFooter();
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+      document.querySelectorAll('.compte-tab').forEach(t => t.style.display = t.id === 'tab-' + name ? 'block' : 'none');
+    }
+  </script>
 </body>
 </html>

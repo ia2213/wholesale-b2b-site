@@ -2,35 +2,83 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ - B2B Wholesale Hub</title>
+  <title>FAQ — WholesaleHub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
   <header></header>
   <main>
-    <h1 class="section-title">Questions fréquentes</h1>
-    <div class="faq-item">
-      <h3>👤 Qui peut commander sur la plateforme ?</h3>
-      <p>La plateforme est dédiée aux professionnels : revendeurs, commerces, associations et entreprises. Une inscription est requise.</p>
-    </div>
-    <div class="faq-item">
-      <h3>💰 Y a-t-il un montant minimum de commande ?</h3>
-      <p>Chaque produit possède une quantité minimale de commande affichée sur sa fiche. Elle est adaptée à la logique B2B.</p>
-    </div>
-    <div class="faq-item">
-      <h3>🚚 Quels sont les délais de livraison ?</h3>
-      <p>Les délais varient selon le produit et la destination. En moyenne 48h en France métropolitaine. Indiqués sur le récapitulatif de commande.</p>
-    </div>
-    <div class="faq-item">
-      <h3>💳 Quels moyens de paiement acceptez-vous ?</h3>
-      <p>Carte bancaire, virement bancaire et, après validation de votre compte, paiement à 30 jours fin de mois pour certains clients.</p>
+    <div style="max-width:720px;">
+      <h1 style="font-size:1.75rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.375rem;">Questions fréquentes</h1>
+      <p style="font-size:0.9375rem;color:var(--text-muted);margin-bottom:2rem;">Tout ce que vous devez savoir sur la plateforme WholesaleHub.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Qui peut commander sur la plateforme ?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">La plateforme est dédiée aux professionnels : revendeurs, commerces, associations et entreprises. Une inscription est requise pour accéder aux prix et passer commande.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Y a-t-il un montant minimum de commande ?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Chaque produit possède une quantité minimale de commande (MOQ) affichée directement sur sa fiche. Elle est adaptée à la logique d'achat en gros B2B.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quels sont les délais de livraison ?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Les délais varient selon le produit et la destination. En moyenne 48h en France métropolitaine pour les commandes passées avant 14h.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quels moyens de paiement acceptez-vous ?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Carte bancaire et virement bancaire. Pour les clients validés, paiement à 30 jours fin de mois disponible sur demande.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Comment suivre mes commandes ?</h3>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">Toutes vos commandes sont accessibles depuis votre espace personnel, onglet "Mes commandes". Vous y retrouvez le statut, le détail et les factures.</div>
+        </div>
+      </div>
+
+      <div class="banner-cta" style="margin-top:2.5rem;">
+        <div class="banner-cta-text">
+          <h3>Vous ne trouvez pas votre réponse ?</h3>
+          <p>Notre équipe B2B est disponible pour vous accompagner.</p>
+        </div>
+        <a href="mailto:contact@wholesalehub.fr" class="btn-blue">Nous contacter</a>
+      </div>
     </div>
   </main>
   <footer></footer>
   <script src="assets/js/supabase.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>renderHeader('faq'); renderFooter();</script>
+  <script>
+    renderHeader('faq'); renderFooter();
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        const isOpen = answer.style.display === 'block';
+        answer.style.display = isOpen ? 'none' : 'block';
+        icon.textContent = isOpen ? '+' : '−';
+      });
+    });
+  </script>
 </body>
 </html>
